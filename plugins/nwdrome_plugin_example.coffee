@@ -1,0 +1,123 @@
+# nwdrome-renderer-plugin example
+# Copyright 2014, Ragg(@_ragg_)
+
+#
+# Plugin interface specification
+#
+
+# Register plugin
+#   JSdrome.registerRendererPlugin(function)
+#   JSdrome.registerCommonPlugin(insert_flag, function)
+#
+#   registerRendererPlugin
+#       function    plugin constructor factory (returns constructor)
+#
+#   registerCommonPlugin
+#       string      BEFORE_FILTER|AFTER_FILTER  Specify common plugin rendering timing.
+#       function    plugin constructor factory (returns constructor)
+#
+#   registerFilterPlugin
+#       function    plugin constructor factory (returns constructor)
+#
+
+
+
+##
+# Renderer plugin (& common plugin) structure
+#
+JSdrome.registerRendererPlugin ->
+    class RendererPlugin
+
+        # Plugin detail setting to instance or prototype
+        description : "Plugin \nDescription"
+        thumbnail   : "path/to/thumbnail.image" # relative from plugin root
+
+        # @param HTMLCanvasElement Rendering result destination canvas
+        constructor : (canvas) ->
+            # do initialize
+            @_canvas = canvas
+            @_ctx    = canvas.getContext "2d"
+
+        onStart     : ->
+            # Call when starting draw.
+
+        onStop      : ->
+            # Call when stopping draw.
+
+        # @param float Current opacity(0.0 - 1.0)
+        onFade      : (opacity) ->
+            # Call when opacity changed.
+
+        # @param float Realtime volume
+        # @param float Part volume
+        onAudio     : (moment, period) ->
+            # The state of the audio volume will be notified.
+
+        # @param int new width
+        # @param int new height
+        onResize    : (width, height) ->
+            # Be notified of canvas size change.
+
+        onTimer     : ->
+            # Call from jsdrome's requestAnimationFrame.
+            # Will rendering process write here.
+
+        # @param int keyCode
+        onKeydown   : (keyCode) ->
+            # If plugin in foreground, will be notified of key input.
+
+        # Unknown...
+        onMidi      : (a1, a2, a3) ->
+            # Be notified of midi input
+
+    # return constructor
+    return RendererPlugin
+
+
+
+##
+# Filter plugin structure
+#
+JSdrome.registerFilterPlugin ->
+    class FilterPlugin
+
+        # Plugin detail setting to instance or prototype
+        description : "Plugin \nDescription"
+        thumbnail   : "path/to/thumbnail.image" # relative from plugin root
+
+        # @param HTMLCanvasElement Rendering result destination canvas
+        constructor : (canvas) ->
+            # do initialize
+            @_canvas = canvas
+            @_ctx    = canvas.getContext "2d"
+
+        onStart     : ->
+            # Call when starting draw.
+
+        onStop      : ->
+            # Call when stopping draw.
+
+        # @param float Realtime volume
+        # @param float Part volume
+        onAudio     : (moment, period) ->
+            # The state of the audio volume will be notified.
+
+        # @param int new width
+        # @param int new height
+        onResize    : (width, height) ->
+            # Be notified of canvas size change.
+
+        onTimer     : ->
+            # Call from jsdrome's requestAnimationFrame.
+            # Will rendering process write here.
+
+        # @param int keyCode
+        onKeydown   : (keyCode) ->
+            # If plugin in foreground, will be notified of key input.
+
+        # Unknown...
+        onMidi      : (a1, a2, a3) ->
+            # Be notified of midi input
+
+    # return constructor
+    return FilterPlugin
