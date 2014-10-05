@@ -29,6 +29,7 @@ JSdrome.addRendererPlugin ->
     class RendererPlugin
 
         # Plugin detail setting to instance or prototype
+        id          : "vendor.Plugin-ID"
         description : "Plugin \nDescription"
         thumbnail   : "path/to/thumbnail.image" # relative from plugin root
 
@@ -82,6 +83,7 @@ JSdrome.addFilterPlugin ->
     class FilterPlugin
 
         # Plugin detail setting to instance or prototype
+        id          : "vendor.Plugin-ID"
         description : "Plugin \nDescription"
         thumbnail   : "path/to/thumbnail.image" # relative from plugin root
 
