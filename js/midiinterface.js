@@ -45,7 +45,10 @@ MidiInterface.prototype.setPort = function(n) {
 
 	var self = this;
 	this.onmidimessage = function(e) { self.receive(e); };
-	this.midi.inputs()[this.in_port].onmidimessage = this.onmidimessage;
+
+	if (this.midi.inputs()[this.in_port]) {
+		this.midi.inputs()[this.in_port].onmidimessage = this.onmidimessage;
+	}
 }
 
 MidiInterface.prototype.setMidiChannel = function(n) {
@@ -71,4 +74,3 @@ MidiInterface.prototype.receive = function(event) {
 	}
 
 }
-
