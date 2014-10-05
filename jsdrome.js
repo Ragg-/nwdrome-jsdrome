@@ -5,6 +5,7 @@
  * This program is licensed under the MIT License.
  * Copyright 2014, aike (@aike1000)
  *
+ * Modification 2014, Ragg (@_ragg_)
  */
 (function () {
 	var app;
