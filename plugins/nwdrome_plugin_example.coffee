@@ -6,17 +6,17 @@
 #
 
 # Register plugin
-#   JSdrome.registerRendererPlugin(function)
-#   JSdrome.registerCommonPlugin(insert_flag, function)
+#   JSdrome.addRendererPlugin(function)
+#   JSdrome.addCommonPlugin(insert_flag, function)
 #
-#   registerRendererPlugin
+#   addRendererPlugin
 #       function    plugin constructor factory (returns constructor)
 #
-#   registerCommonPlugin
+#   addCommonPlugin
 #       string      BEFORE_FILTER|AFTER_FILTER  Specify common plugin rendering timing.
 #       function    plugin constructor factory (returns constructor)
 #
-#   registerFilterPlugin
+#   addFilterPlugin
 #       function    plugin constructor factory (returns constructor)
 #
 
@@ -25,7 +25,7 @@
 ##
 # Renderer plugin (& common plugin) structure
 #
-JSdrome.registerRendererPlugin ->
+JSdrome.addRendererPlugin ->
     class RendererPlugin
 
         # Plugin detail setting to instance or prototype
@@ -78,7 +78,7 @@ JSdrome.registerRendererPlugin ->
 ##
 # Filter plugin structure
 #
-JSdrome.registerFilterPlugin ->
+JSdrome.addFilterPlugin ->
     class FilterPlugin
 
         # Plugin detail setting to instance or prototype
